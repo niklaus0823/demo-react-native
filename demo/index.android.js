@@ -1,7 +1,4 @@
-'use strict';
-//let { AppRegistry } = require('react-native');
-//let AppDemo = require('./index.js');
 import { AppRegistry } from 'react-native';
-let AppDemo = require('./index.js');
+import demo from './index.js';
 
-AppRegistry.registerComponent('demo', () => AppDemo);
+AppRegistry.registerComponent('demo', () => demo);
