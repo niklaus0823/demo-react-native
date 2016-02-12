@@ -8,18 +8,12 @@ class stageComponent extends Component {
     this.state = {
       navigator: props.navigator
     };
-    this.goBack = this.goBack.bind(this);
-  }
-
-  goBack() {
-    this.state.navigator.push({ name:"default" });
   }
 
   render() {
     return (
       <View>
-        <Text>STAGE 1</Text>
-        <Text onPress={this.goBack}>back</Text>
+        <Text>我的订单</Text>
       </View>
     );
   }
