@@ -5,6 +5,7 @@ class ShopViewComponent extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       navigator:props.navigator
     };
@@ -12,9 +13,9 @@ class ShopViewComponent extends Component {
 
   render() {
     return (
-      <View>
+      <Text>
         Shop View
-      </View>
+      </Text>
     );
   }
 

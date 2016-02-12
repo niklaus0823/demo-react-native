@@ -43,15 +43,19 @@ class demo extends Component {
       default: //default view
         Component = SearchPage;
     }
-    console.log(router);
     this.state.navigator = navigator;
 
-    return <Component navigator={ navigator } />
+    return <Component router={ router } navigator={ navigator } />
   }
 
   render() {
+    let goShopView = (shop) => {
+      this.state.navigator.push({ title: shop.title, name:"shopView", data: shop });
+      this.changeState(shop.title);
+    };
+
     let goSearchPage = () => {
-      this.state.navigator.push({ title: '店铺列表', name:"searchPage" });
+      this.state.navigator.push({ title: '店铺列表', name:"searchPage", goShopView:goShopView });
       this.changeState('店铺列表');
     };
 
@@ -62,7 +66,7 @@ class demo extends Component {
 
     let goStage2 = () => {
       this.state.navigator.push({ title: '我的餐桌', name:"stage2" });
-      this.changeState('我的餐桌');
+      this.changeState('我的订单');
     };
 
     return (
@@ -74,7 +78,7 @@ class demo extends Component {
 
         <View style={ styles.container}>
           <Navigator
-            initialRoute={{ name: 'welcome' }}
+            initialRoute={{ title: '店铺列表', name:"searchPage", goShopView:goShopView }}
             configureScene={ this.configureScene }
             renderScene={ this.renderScene }
           />

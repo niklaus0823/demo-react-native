@@ -12,7 +12,8 @@ class SearchPageComponent extends Component {
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
       loaded: false,
-      navigator:props.navigator
+      navigator:props.navigator,
+      goShopView:props.router.goShopView
     };
   }
 
@@ -57,16 +58,8 @@ class SearchPageComponent extends Component {
   }
 
   renderShopList(shop) {
-
-    let goShopView = (shopId, shopName) => {
-      this.state.navigator.push({
-        title: shopName,
-        name: 'shopView'
-      });
-    };
-
     return (
-      <TouchableHighlight onPress={() => goShopView(shop.id, shop.title)} underlayColor='#DDDDDD'>
+      <TouchableHighlight onPress={() => this.state.goShopView(shop)} underlayColor='#DDDDDD'>
         <View style={ styles.container }>
           <Image
             source={{ uri: shop.thumbnail }}
