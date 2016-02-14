@@ -19,10 +19,10 @@
 
 		npm install -g nrm
 
-3. 安装 JDK，并将 JDK 的 bin 目录加入到系统 PATH 环境变量中。
+3. 安装 JDK，并将 JDK 的 bin 目录加入到系统 PATH 环境变量中。增加JAVA_HOME参数，路径到jdk根目录
 	* [下载地址](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-4. 安装 Android SDK，进入 SDKManager, 确保项目安装以下工具，并将 Android SDK 的 bin 目录加入到系统的 PATH 环境变量中。
+4. 安装 Android SDK，进入 SDKManager, 确保项目安装以下工具，并将 Android SDK 的 bin 目录加入到系统的 PATH 环境变量中。增加ANDROID_HOME参数，路径到android_sdk根目录
 	* Tools/Android SDK Tools (24.3.3)
 	* Tools/Android SDK Platform-tools (22)
 	* Tools/Android SDK Build-tools (23.0.1)
@@ -122,3 +122,17 @@
 
 * 第三方模块：[https://js.coach/](https://js.coach/)
 * 已知的问题：[http://reactnative.cn/docs/known-issues.html#content](http://reactnative.cn/docs/known-issues.html#content)
+
+## 代码相关
+
+* 关于IOS与Android的差异性
+	* 验证工具：https://rnplay.org/apps/fgncag
+
+* 关于TextInput
+	1. border属性相关设置，在安卓下是无法起作用的，IOS可以正常支持圆角与框的属性设置
+		* 相关连接：https://github.com/facebook/react-native/issues/4619
+	2. 在安卓下，默认会有下划线，使用underlineColorAndroid = "transparent"可以取消此设置
+
+* 关于Navigator
+	1. initialRoute参数，如果提供的是一个返回是 object 的方法名，会出现 Waring 级别警告，但不影响功能
+	2. renderScene参数，如果提供的方法中，使用 this.setState() 会造成 APP 崩溃，即使你已经 bind(this)

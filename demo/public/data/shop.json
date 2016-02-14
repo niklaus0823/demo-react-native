@@ -1,149 +1,227 @@
 {
-  "total": 24,
   "shopList": [
     {
-      "id": "1",
+      "id": 10001,
       "title": "肯德基",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "thumbnail": "/public/images/shop/10001.jpg",
+      "star": 4,
+      "totalSell": 343,
+      "startPrice": 0,
+      "deliveryPrice": 9,
+      "status": 1,
+      "menu": [
+        {
+          "id": 10001,
+          "title": "红豆派",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 5,
+          "totalSell": 3,
+          "price": 11,
+          "description": "红豆派1个"
+        },
+        {
+          "id": 10002,
+          "title": "红豆派2个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 3,
+          "totalSell": 4,
+          "price": 22,
+          "description": "红豆派2个"
+        },
+        {
+          "id": 10003,
+          "title": "红豆派3个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 3,
+          "totalSell": 4,
+          "price": 33,
+          "description": "红豆派3个"
+        },
+        {
+          "id": 10004,
+          "title": "红豆派4个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 2,
+          "price": 44,
+          "description": "红豆派4个"
+        },
+        {
+          "id": 10005,
+          "title": "红豆派5个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 1,
+          "price": 55,
+          "description": "红豆派5个"
+        },
+        {
+          "id": 10006,
+          "title": "红豆派5个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 1,
+          "price": 55,
+          "description": "红豆派5个"
+        },
+        {
+          "id": 10007,
+          "title": "红豆派5个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 1,
+          "price": 55,
+          "description": "红豆派5个"
+        },
+        {
+          "id": 10008,
+          "title": "红豆派5个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 1,
+          "price": 55,
+          "description": "红豆派5个"
+        },
+        {
+          "id": 10009,
+          "title": "红豆派5个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 1,
+          "price": 55,
+          "description": "红豆派5个"
+        },
+        {
+          "id": 100010,
+          "title": "红豆派5个",
+          "thumbnail": "/public/images/menu/10001.jpg",
+          "star": 0,
+          "totalSell": 1,
+          "price": 55,
+          "description": "红豆派5个"
+        }
+      ]
     },
     {
-      "id": "2",
+      "id": 10002,
       "title": "麦当劳",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "thumbnail": "/public/images/shop/10002.jpg",
+      "star": 2,
+      "totalSell": 231,
+      "startPrice": 0,
+      "deliveryPrice": 14,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "3",
-      "title": "餐厅3",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10003,
+      "title": "肯德基",
+      "thumbnail": "/public/images/shop/10001.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "4",
-      "title": "餐厅4",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10004,
+      "title": "麦当劳",
+      "thumbnail": "/public/images/shop/10002.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "5",
-      "title": "餐厅5",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10005,
+      "title": "肯德基",
+      "thumbnail": "/public/images/shop/10001.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "6",
-      "title": "餐厅6",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10006,
+      "title": "麦当劳",
+      "thumbnail": "/public/images/shop/10002.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "7",
-      "title": "餐厅7",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10007,
+      "title": "肯德基",
+      "thumbnail": "/public/images/shop/10001.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "8",
-      "title": "餐厅8",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10008,
+      "title": "麦当劳",
+      "thumbnail": "/public/images/shop/10002.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "9",
-      "title": "餐厅9",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10009,
+      "title": "肯德基",
+      "thumbnail": "/public/images/shop/10001.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "10",
-      "title": "餐厅10",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10010,
+      "title": "麦当劳",
+      "thumbnail": "/public/images/shop/10002.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "11",
-      "title": "餐厅11",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10011,
+      "title": "肯德基",
+      "thumbnail": "/public/images/shop/10001.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     },
     {
-      "id": "12",
-      "title": "餐厅12",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "13",
-      "title": "餐厅13",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "14",
-      "title": "餐厅14",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "15",
-      "title": "餐厅15",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "16",
-      "title": "餐厅16",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "17",
-      "title": "餐厅17",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "18",
-      "title": "餐厅18",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "19",
-      "title": "餐厅19",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "20",
-      "title": "餐厅20",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "21",
-      "title": "餐厅21",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "22",
-      "title": "餐厅22",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "23",
-      "title": "餐厅23",
-      "thumbnail": "http://192.168.1.3:8081/public/images/kfc.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
-    },
-    {
-      "id": "24",
-      "title": "餐厅24",
-      "thumbnail": "http://192.168.1.3:8081/public/images/mdl.jpg",
-      "description": "说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明"
+      "id": 10012,
+      "title": "麦当劳",
+      "thumbnail": "/public/images/shop/10002.jpg",
+      "star": 0,
+      "totalSell": 0,
+      "startPrice": 0,
+      "deliveryPrice": 0,
+      "status": 1,
+      "menu": []
     }
   ]
 }

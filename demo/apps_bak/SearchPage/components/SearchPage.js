@@ -1,6 +1,7 @@
 import React,{ Component, View, Text, StyleSheet, Image, ListView, TouchableHighlight } from 'react-native';
 
-const REQUEST_URL = 'http://192.168.1.3:8081/public/data/shop.json';
+const IP = '172.17.67.168';
+const REQUEST_URL = 'http://' + IP + ':8081/public/data/shop.json';
 
 // 搜索页
 class SearchPageComponent extends Component {
