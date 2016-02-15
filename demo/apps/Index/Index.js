@@ -3,6 +3,7 @@ import IndexDefault from './IndexDefault';
 import IndexOrder from './IndexOrder';
 import IndexDiscovery from './IndexDiscovery';
 import IndexMine from './IndexMine';
+import BaseStyles from '../../config/BaseStyles';
 
 // 主页
 class MainComponent extends Component {
@@ -76,33 +77,33 @@ class MainComponent extends Component {
   render() {
 
     return (
-      <View style={ styles.container }>
+      <View style={ BaseStyles.container }>
 
-        <View style={ styles.header }>
-          <Text style={ [styles.text, styles.textWhite] }>{ this.state.defaultTitle }</Text>
+        <View style={ Styles.header }>
+          <Text style={ [BaseStyles.text, BaseStyles.textWhite] }>{ this.state.defaultTitle }</Text>
         </View>
 
-        <View style={ styles.context }>
+        <View style={ Styles.context }>
           <Navigator
-            style={ styles.container }
+            style={ BaseStyles.container }
             initialRoute={{ name: this.state.defaultComponent }}
             configureScene={ this.configureScene }
             renderScene={ this.renderScene.bind(this) }
             />
         </View>
 
-        <View style={ styles.footer }>
-          <TouchableHighlight style={ styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goIndexPage.bind(this) }>
-            <Text style={ styles.text }>外卖</Text>
+        <View style={ Styles.footer }>
+          <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goIndexPage.bind(this) }>
+            <Text style={ BaseStyles.text }>外卖</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={ styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goOrderPage.bind(this) }>
-            <Text style={ styles.text }>订单</Text>
+          <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goOrderPage.bind(this) }>
+            <Text style={ BaseStyles.text }>订单</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={ styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goDiscovery.bind(this) }>
-            <Text style={ styles.text }>发现</Text>
+          <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goDiscovery.bind(this) }>
+            <Text style={ BaseStyles.text }>发现</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={ styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goMine.bind(this) }>
-            <Text style={ styles.text }>我的</Text>
+          <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goMine.bind(this) }>
+            <Text style={ BaseStyles.text }>我的</Text>
           </TouchableHighlight>
         </View>
 
@@ -111,19 +112,8 @@ class MainComponent extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  // FONT
-  text: {
-    fontSize: 26
-  },
-  textWhite: {
-    color: '#FFFFFF'
-  },
-
+const Styles = StyleSheet.create({
   // LAYOUT BOX
-  container: {
-    flex: 1
-  },
   header: {
     flex: 10,
     backgroundColor: '#48BBEC',
@@ -143,8 +133,9 @@ const styles = StyleSheet.create({
   // FOOTER
   footerButton: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#666666',
+    borderTopWidth: 1,
+    borderRightWidth: 1,
+    borderColor: '#48BBEC',
     alignItems: 'center',
     justifyContent: 'center'
   }

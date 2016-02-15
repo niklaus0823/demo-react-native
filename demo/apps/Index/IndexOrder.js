@@ -1,4 +1,5 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight } from 'react-native';
+import BaseStyles from '../../config/BaseStyles';
 
 // 订单主面板
 class IndexOrderComponent extends Component {
@@ -9,26 +10,13 @@ class IndexOrderComponent extends Component {
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={ [BaseStyles.container, BaseStyles.alignCenter, BaseStyles.alignVerticalCenter] }>
         <View>
-          <Text style={ styles.text }>订单主面板DISPLAY</Text>
+          <Text style={ BaseStyles.text }>订单主面板DISPLAY</Text>
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    fontSize: 20,
-    color: '#48BBEC'
-  }
-});
-
 
 export default IndexOrderComponent;

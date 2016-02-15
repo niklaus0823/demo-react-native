@@ -3,6 +3,7 @@ import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, 
 import Index from './apps/Index/Index';
 import ShopList from './apps/Shop/ShopList';
 import ShopView from './apps/Shop/ShopView';
+import BaseStyles from './config/BaseStyles';
 
 class demo extends Component {
 
@@ -14,7 +15,7 @@ class demo extends Component {
   }
 
   configureScene(route) {
-    return Navigator.SceneConfigs.PushFromRight;
+    return Navigator.SceneConfigs.FadeAndroid;
   }
 
   renderScene(router, navigator) {
@@ -39,7 +40,7 @@ class demo extends Component {
   render() {
     return (
       <Navigator
-        style={ styles.container }
+        style={ BaseStyles.container }
         initialRoute={{ name: this.state.defaultComponent }}
         configureScene={ this.configureScene }
         renderScene={ this.renderScene }
@@ -48,11 +49,5 @@ class demo extends Component {
   }
 
 }
-
-var styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
 
 export default demo;

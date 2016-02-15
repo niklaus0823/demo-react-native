@@ -1,6 +1,7 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight } from 'react-native';
+import BaseConfigs from '../../config/BaseConfigs';
+import BaseStyles from '../../config/BaseStyles';
 
-const REQUEST_URL = 'http://172.17.67.168:8081';
 class ShopViewComponent extends Component {
 
   constructor(props) {
@@ -20,7 +21,6 @@ class ShopViewComponent extends Component {
   }
 
   fetchData() {
-    console.log(this.state.shop.menuList);
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(this.state.shop.menuList),
       loaded: true
@@ -33,23 +33,26 @@ class ShopViewComponent extends Component {
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={ BaseStyles.container }>
 
-        <View style={ styles.header }>
-          <TouchableHighlight style={ styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
-            <Text style={ styles.buttonText }> 〈 </Text>
+        <View style={ Styles.header }>
+          <TouchableHighlight style={ Styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
+            <Text style={ Styles.buttonText }> 〈 </Text>
           </TouchableHighlight>
-          <View style={ styles.headerTitle }>
-            <Text style={ styles.headerTitleText }>{ this.state.shop.title }</Text>
+          <View style={ BaseStyles.headerTitle }>
+            <Text style={ BaseStyles.headerTitleText }>{ this.state.shop.title }</Text>
           </View>
         </View>
 
         <ListView
-          style={ styles.context }
+          style={ Styles.context }
           dataSource={ this.state.dataSource }
           renderRow={ this.renderMenuList.bind(this) }
           />
 
+        <View style={ Styles.cartArea} >
+          <Text>绝对底部</Text>
+        </View>
       </View>
     );
   }
@@ -63,23 +66,31 @@ class ShopViewComponent extends Component {
   }
 
   renderMenuList(menu) {
-    let menuThumbnail = REQUEST_URL + menu.thumbnail;
+    let menuThumbnail = BaseConfigs.REQUEST_URL + menu.thumbnail;
     let menuStar = this.drawStar(menu.star);
 
     return (
       <TouchableHighlight underlayColor='#99d9f4'>
-        <View style={ styles.listRows }>
+        <View style={ BaseStyles.listRows }>
 
-          <Image style={ styles.image } source={{ uri: menuThumbnail }} />
+          <Image style={ BaseStyles.image } source={{ uri: menuThumbnail }} />
 
-          <View style={ styles.container }>
-            <Text style={ [styles.text, styles.textBlack] }>{ menu.title }</Text>
-            <Text style={ [styles.textSmaller, styles.textGray] }>{ menu.description }</Text>
-            <Text style={ [styles.textSmaller, styles.textGray] }>
-              <Text style={ styles.textGold }>{ menuStar }</Text>
-               { menu.star } 月售{ menu.totalSell }份
-            </Text>
-            <Text style={ [styles.text, styles.textBolder, styles.textOrange] }>￥{ menu.price }</Text>
+          <View style={ BaseStyles.container }>
+            <View style={ BaseStyles.cellRows }>
+              <View style={ BaseStyles.cell80 }>
+                <Text style={ [BaseStyles.text, BaseStyles.textBlack] }>{ menu.title }</Text>
+                <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>{ menu.description }</Text>
+                <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>
+                  <Text style={ BaseStyles.textGold }>{ menuStar }</Text>
+                  { menu.star } 月售{ menu.totalSell }份
+                </Text>
+                <Text style={ [BaseStyles.text, BaseStyles.textBolder, BaseStyles.textOrange] }>￥{ menu.price }</Text>
+              </View>
+              <View style={ [BaseStyles.cell20] }>
+                  <Text style={ [BaseStyles.textBigger, BaseStyles.textGray, BaseStyles.textRight] }>+</Text>
+              </View>
+            </View>
+
           </View>
 
         </View>
@@ -88,50 +99,8 @@ class ShopViewComponent extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  // FONT
-  text: {
-    fontSize: 26,
-    color: '#48BBEC'
-  },
-  textSmall: {
-    fontSize: 20
-  },
-  textSmaller: {
-    fontSize: 12
-  },
-  textBold: {
-    fontWeight: '600'
-  },
-  textBolder: {
-    fontWeight: '900'
-  },
-  textWhite: {
-    color: '#FFFFFF'
-  },
-  textBlack: {
-    color: '#000000'
-  },
-  textGold: {
-    color: '#FFD700'
-  },
-  textOrange: {
-    color: '#FF8C00'
-  },
-  textGray: {
-    color: '#999999'
-  },
-  textTop: {
-    alignSelf: 'flex-start'
-  },
-  textRight: {
-    textAlign: 'right'
-  },
-
+const Styles = StyleSheet.create({
   // LAYOUT BOX
-  container: {
-    flex: 1
-  },
   header: {
     flex: 10,
     flexDirection: 'row',
@@ -147,87 +116,22 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
+  cartArea: {
+    flex: 10,
+    backgroundColor: '#000000',
+    opacity: 0.5,
+    bottom: 0,
+    position: 'absolute'
+  },
 
   // BUTTON
   button: {
-    flex: 1
+    width: 50
   },
   buttonText: {
     fontSize: 30,
     color: '#FFFFFF',
     alignSelf: 'center'
-  },
-
-  // INPUT
-  headerTitle: {
-    flex: 16,
-    height: 36,
-    marginLeft: 10
-  },
-  headerTitleText: {
-    fontSize: 18,
-    color: '#FFFFFF',
-    marginRight: 10,
-    marginLeft: 10,
-    marginTop: 3
-  },
-
-  // IMAGES
-  image: {
-    width: 80,
-    height: 80,
-    borderColor: '#999999',
-    borderWidth: 1,
-    borderRadius: 10,
-    marginRight: 20
-  },
-
-  // CELL
-  cellRows: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  cell10: {
-    flex: 10
-  },
-  cell20: {
-    flex: 20
-  },
-  cell30: {
-    flex: 30
-  },
-  cell40: {
-    flex: 40
-  },
-  cell50: {
-    flex: 50
-  },
-  cell60: {
-    flex: 60
-  },
-  cell70: {
-    flex: 70
-  },
-  cell80: {
-    flex: 80
-  },
-  cell90: {
-    flex: 90
-  },
-
-  // LIST VIEW
-  listRows: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderBottomColor: '#999999',
-    borderBottomWidth: 1
   }
 });
 

@@ -1,7 +1,6 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight, Alert } from 'react-native';
-
-const REQUEST_URL = 'http://172.17.67.168:8081';
-const REQUEST_DATA_API = REQUEST_URL + '/public/data/shop.json';
+import BaseConfigs from '../../config/BaseConfigs';
+import BaseStyles from '../../config/BaseStyles';
 
 class ShopListComponent extends Component {
 
@@ -22,7 +21,7 @@ class ShopListComponent extends Component {
   }
 
   fetchData() {
-    fetch(REQUEST_DATA_API)
+    fetch(BaseConfigs.REQUEST_URL + '/public/data/shop.json')
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
@@ -57,19 +56,19 @@ class ShopListComponent extends Component {
     }
 
     return (
-      <View style={ styles.container }>
+      <View style={ BaseStyles.container }>
 
-        <View style={ styles.header }>
-          <TouchableHighlight style={ styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
-            <Text style={ styles.buttonText }> 〈 </Text>
+        <View style={ Styles.header }>
+          <TouchableHighlight style={ Styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
+            <Text style={ Styles.buttonText }> 〈 </Text>
           </TouchableHighlight>
-          <View style={ styles.inputSearch }>
-            <Text style={ styles.inputSearchText }>搜索:{ this.state.keyword }</Text>
+          <View style={ BaseStyles.inputSearch }>
+            <TextInput style={ BaseStyles.inputSearchText } defaultValue={ this.state.keyword } editable={ false } underlineColorAndroid="transparent"/>
           </View>
         </View>
 
         <ListView
-          style={ styles.context }
+          style={ Styles.context }
           dataSource={ this.state.dataSource }
           renderRow={ this.renderShopList.bind(this) }
           />
@@ -80,7 +79,7 @@ class ShopListComponent extends Component {
 
   renderLoadingView() {
     return (
-      <View style={ styles.container }>
+      <View style={ BaseStyles.container }>
         <Text>
           Loading movies...
         </Text>
@@ -96,36 +95,36 @@ class ShopListComponent extends Component {
   }
 
   renderShopList(shop) {
-    let shopThumbnail = REQUEST_URL + shop.thumbnail;
+    let shopThumbnail = BaseConfigs.REQUEST_URL + shop.thumbnail;
     let shopStar = this.drawStar(shop.star);
     let shopStatus = (shop.status == 1) ? "正常经营" : "停业休息";
 
     return (
       <TouchableHighlight onPress={ () => this.goShopView.bind(this)(shop) } underlayColor='#99d9f4'>
-        <View style={ styles.listRows }>
+        <View style={ BaseStyles.listRows }>
 
-          <Image style={ styles.image } source={{ uri: shopThumbnail }} />
+          <Image style={ BaseStyles.image } source={{ uri: shopThumbnail }} />
 
-          <View style={ styles.cellRows }>
+          <View style={ BaseStyles.cellRows }>
 
-            <View style={ [styles.container, styles.cell70] }>
-              <Text style={ [styles.text, styles.textBlack] }>{ shop.title }</Text>
-              <Text style={ [styles.textSmaller] }>
-                <Text style={ styles.textGold }>{ shopStar }</Text>
-                <Text style={ [styles.textOrange, styles.textBolder] }> { shop.star }</Text>
-                <Text style={ styles.textGray }>  月售{ shop.totalSell }单</Text>
+            <View style={ BaseStyles.cell70 }>
+              <Text style={ [BaseStyles.text, BaseStyles.textBlack] }>{ shop.title }</Text>
+              <Text style={ [BaseStyles.textSmaller] }>
+                <Text style={ BaseStyles.textGold }>{ shopStar }</Text>
+                <Text style={ [BaseStyles.textOrange, BaseStyles.textBolder] }> { shop.star }</Text>
+                <Text style={ BaseStyles.textGray }>  月售{ shop.totalSell }单</Text>
               </Text>
-              <View style={ [styles.shopStatus] }>
-                <Text style={ [styles.textSmaller, styles.textWhite] }>{ shopStatus }</Text>
+              <View style={ [BaseStyles.shopStatus] }>
+                <Text style={ [BaseStyles.textSmaller, BaseStyles.textWhite] }>{ shopStatus }</Text>
               </View>
             </View>
 
-            <View style={ [styles.container, styles.cell30] }>
-              <Text style={ [styles.textSmaller, styles.textRight] }>
-                <Text style={ [styles.textSmall, styles.textOrange, styles.textBolder] }>￥{ shop.startPrice }</Text> 起送
+            <View style={ BaseStyles.cell30 }>
+              <Text style={ [BaseStyles.textSmaller, BaseStyles.textRight] }>
+                <Text style={ [BaseStyles.textSmall, BaseStyles.textOrange, BaseStyles.textBolder] }>￥{ shop.startPrice }</Text> 起送
               </Text>
-              <Text style={ [styles.textSmaller, styles.textRight] }>
-                <Text style={ [styles.textOrange, styles.textBolder] }>￥{ shop.deliveryPrice }</Text> 配送费
+              <Text style={ [BaseStyles.textSmaller, BaseStyles.textRight] }>
+                <Text style={ [BaseStyles.textOrange, BaseStyles.textBolder] }>￥{ shop.deliveryPrice }</Text> 配送费
               </Text>
             </View>
 
@@ -137,50 +136,8 @@ class ShopListComponent extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  // FONT
-  text: {
-    fontSize: 26,
-    color: '#48BBEC'
-  },
-  textSmall: {
-    fontSize: 20
-  },
-  textSmaller: {
-    fontSize: 12
-  },
-  textBold: {
-    fontWeight: '600'
-  },
-  textBolder: {
-    fontWeight: '900'
-  },
-  textWhite: {
-    color: '#FFFFFF'
-  },
-  textBlack: {
-    color: '#000000'
-  },
-  textGold: {
-    color: '#FFD700'
-  },
-  textOrange: {
-    color: '#FF8C00'
-  },
-  textGray: {
-    color: '#999999'
-  },
-  textTop: {
-    alignSelf: 'flex-start'
-  },
-  textRight: {
-    textAlign: 'right'
-  },
-
+const Styles = StyleSheet.create({
   // LAYOUT BOX
-  container: {
-    flex: 1
-  },
   header: {
     flex: 10,
     flexDirection: 'row',
@@ -199,92 +156,12 @@ const styles = StyleSheet.create({
 
   // BUTTON
   button: {
-    flex: 1
+    width: 50
   },
   buttonText: {
     fontSize: 30,
     color: '#FFFFFF',
     alignSelf: 'center'
-  },
-
-  // INPUT
-  inputSearch: {
-    flex: 16,
-    height: 36,
-    marginLeft: 10,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8
-  },
-  inputSearchText: {
-    fontSize: 18,
-    color: '#48BBEC',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginRight: 10,
-    marginLeft: 10,
-    marginTop: 3
-  },
-
-  // IMAGES
-  image: {
-    width: 80,
-    height: 80,
-    borderColor: '#999999',
-    borderWidth: 1,
-    borderRadius: 10,
-    marginRight: 20
-  },
-
-  // CELL
-  cellRows: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  cell10: {
-    flex: 10
-  },
-  cell20: {
-    flex: 20
-  },
-  cell30: {
-    flex: 30
-  },
-  cell40: {
-    flex: 40
-  },
-  cell50: {
-    flex: 50
-  },
-  cell60: {
-    flex: 60
-  },
-  cell70: {
-    flex: 70
-  },
-  cell80: {
-    flex: 80
-  },
-  cell90: {
-    flex: 90
-  },
-
-  // LIST VIEW
-  listRows: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-    borderBottomColor: '#999999',
-    borderBottomWidth: 1
   },
 
   // SHOP STYLE

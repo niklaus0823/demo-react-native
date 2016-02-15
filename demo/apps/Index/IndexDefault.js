@@ -1,5 +1,6 @@
 "use strict";
 import React, { Component, ScrollView, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight, Alert } from 'react-native';
+import BaseStyles from '../../config/BaseStyles';
 
 // 附近餐厅主面板
 class MainIndexComponent extends Component {
@@ -38,19 +39,19 @@ class MainIndexComponent extends Component {
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={ BaseStyles.container }>
 
-        <View style={ styles.header }>
-          <View style={ styles.inputSearch }>
-            <TextInput ref="keyword" style={ styles.inputSearchText } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
+        <View style={ Styles.header }>
+          <View style={ BaseStyles.inputSearch }>
+            <TextInput ref="keyword" style={ BaseStyles.inputSearchText } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
           </View>
-          <TouchableHighlight style={ styles.button } onPress={ this.onSearchPress.bind(this) } underlayColor='#99d9f4'>
-            <Text style={ styles.buttonText }>Go</Text>
+          <TouchableHighlight style={ BaseStyles.button } onPress={ this.onSearchPress.bind(this) } underlayColor='#99d9f4'>
+            <Text style={ BaseStyles.buttonText }>Go</Text>
           </TouchableHighlight>
         </View>
 
-        <View style={ styles.context }>
-          <Text style={ styles.text }>附近餐厅主面板DISPLAY</Text>
+        <View style={ [Styles.context, BaseStyles.alignCenter, BaseStyles.alignVerticalCenter] }>
+          <Text style={ BaseStyles.text }>附近餐厅主面板DISPLAY</Text>
         </View>
 
       </View>
@@ -58,17 +59,8 @@ class MainIndexComponent extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  // FONT
-  text: {
-    fontSize: 20,
-    color: '#48BBEC'
-  },
-
+const Styles = StyleSheet.create({
   // LAYOUT BOX
-  container: {
-    flex: 1
-  },
   header: {
     flex: 1,
     flexDirection: 'row',
@@ -79,48 +71,7 @@ const styles = StyleSheet.create({
     paddingRight: 50
   },
   context: {
-    flex: 6,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  // BUTTON
-  button: {
-    flex: 1,
-    height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#FFFFFF',
-    borderWidth: 2,
-    borderRadius: 8,
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
-
-  // INPUT
-  inputSearch: {
-    flex: 9,
-    height: 36,
-    marginRight: 10,
-    marginBottom: 0,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8
-  },
-  inputSearchText: {
-    height: 36,
-    fontSize: 18,
-    color: '#48BBEC',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginRight: 10,
-    marginLeft: 10
+    flex: 6
   }
 });
 

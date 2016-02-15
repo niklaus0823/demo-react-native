@@ -1,4 +1,5 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight } from 'react-native';
+import BaseStyles from '../../config/BaseStyles';
 
 // 发现主面板
 class IndexDiscoveryComponent extends Component {
@@ -9,26 +10,13 @@ class IndexDiscoveryComponent extends Component {
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={ [BaseStyles.container, BaseStyles.alignCenter, BaseStyles.alignVerticalCenter] }>
         <View>
-          <Text style={ styles.text }>发现主面板DISPLAY</Text>
+          <Text style={ BaseStyles.text }>发现主面板DISPLAY</Text>
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    fontSize: 20,
-    color: '#48BBEC'
-  }
-});
-
 
 export default IndexDiscoveryComponent;
