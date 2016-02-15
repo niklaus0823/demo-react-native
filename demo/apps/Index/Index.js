@@ -10,10 +10,10 @@ class MainComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navigator: props.navigator,
+      mainNavigator: props.mainNavigator,
+      subNavigator: null,
       defaultTitle: '搜索外卖',
-      defaultComponent: 'IndexDefault',
-      childNavigator: null
+      defaultComponent: 'IndexDefault'
     };
 
     // 将state绑定到自定义函数onChange中
@@ -48,32 +48,28 @@ class MainComponent extends Component {
       default: //default view
         Component = IndexDefault;
     }
-    this.state.childNavigator = navigator;
+    this.state.subNavigator = navigator;
 
-    return <Component router={ router } navigator={ navigator } />
-  }
-
-  goShopList(keyword) {
-    this.state.navigator.push({ name:"ShopList", keyword:keyword });
+    return <Component router={ router } mainNavigator={ this.state.mainNavigator } childNavigator={ navigator } />
   }
 
   goIndexPage() {
-    this.state.childNavigator.push({ name:"IndexDefault", goShopList:this.goShopList.bind(this) });
+    this.state.subNavigator.push({ name:"IndexDefault" });
     this.changeTitle('搜索外卖');
   }
 
   goOrderPage() {
-    this.state.childNavigator.push({ name:"IndexOrder" });
+    this.state.subNavigator.push({ name:"IndexOrder" });
     this.changeTitle('订单管理');
   }
 
   goDiscovery() {
-    this.state.childNavigator.push({ name:"IndexDiscovery" });
+    this.state.subNavigator.push({ name:"IndexDiscovery" });
     this.changeTitle('周边发现');
   }
 
   goMine() {
-    this.state.childNavigator.push({ name:"IndexMine" });
+    this.state.subNavigator.push({ name:"IndexMine" });
     this.changeTitle('我的管理');
   };
 
@@ -87,7 +83,7 @@ class MainComponent extends Component {
         <View style={ styles.context }>
           <Navigator
             style={ styles.container }
-            initialRoute={{ name: this.state.defaultComponent, goShopList: this.goShopList.bind(this) }}
+            initialRoute={{ name: this.state.defaultComponent }}
             configureScene={ this.configureScene }
             renderScene={ this.renderScene.bind(this) }
             />

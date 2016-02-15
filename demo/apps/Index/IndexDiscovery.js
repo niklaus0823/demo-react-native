@@ -1,7 +1,7 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight } from 'react-native';
 
 // 发现主面板
-class MainIndexComponent extends Component {
+class IndexDiscoveryComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default MainIndexComponent;
+export default IndexDiscoveryComponent;

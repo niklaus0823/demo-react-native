@@ -1,15 +1,15 @@
 'use strict';
 import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight } from 'react-native';
-import MainIndex from './apps/Main/Index';
+import Index from './apps/Index/Index';
 import ShopList from './apps/Shop/ShopList';
+import ShopView from './apps/Shop/ShopView';
 
 class demo extends Component {
 
   constructor() {
     super();
     this.state = {
-      defaultComponent: 'MainIndex',
-      navigator: null
+      defaultComponent: 'Index'
     };
   }
 
@@ -20,18 +20,20 @@ class demo extends Component {
   renderScene(router, navigator) {
     let Component = null;
     switch(router.name) {
-      case "MainIndex":
-        Component = MainIndex;
+      case "Index":
+        Component = Index;
         break;
       case "ShopList":
         Component = ShopList;
         break;
-      default: //default view
-        Component = MainIndex;
+      case "ShopView":
+        Component = ShopView;
+        break;
+      default:
+        Component = Index;
     }
-    this.state.navigator = navigator;
 
-    return <Component router={ router } navigator={ navigator } />
+    return <Component router={ router } mainNavigator={ navigator } />
   }
 
   render() {
@@ -40,7 +42,7 @@ class demo extends Component {
         style={ styles.container }
         initialRoute={{ name: this.state.defaultComponent }}
         configureScene={ this.configureScene }
-        renderScene={ this.renderScene.bind(this) }
+        renderScene={ this.renderScene }
         />
     );
   }

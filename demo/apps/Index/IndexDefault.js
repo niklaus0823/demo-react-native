@@ -8,7 +8,7 @@ class MainIndexComponent extends Component {
     super(props);
     this.state = {
       keyword: null,
-      goShopList: props.router.goShopList
+      mainNavigator: props.mainNavigator
     };
   }
 
@@ -25,16 +25,20 @@ class MainIndexComponent extends Component {
         '确认开始搜索',
         "关键字:" + this.state.keyword,
         [
-          { text: '是', onPress: () => this.state.goShopList(this.state.keyword) },
+          { text: '是', onPress: () => this.goShopList(this.state.keyword) },
           { text: '否', onPress: () => this.refs.keyword.focus() }
         ]
       )
     }
   }
 
+  goShopList(keyword) {
+    this.state.mainNavigator.push({ name:"ShopList", keyword:keyword });
+  }
+
   render() {
     return (
-      <ScrollView style={ styles.container }>
+      <View style={ styles.container }>
         <View style={ styles.searchBar }>
           <View style={ styles.searchInput }>
             <TextInput ref="keyword" style={ styles.textInput } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
@@ -46,7 +50,7 @@ class MainIndexComponent extends Component {
         <View style={ styles.indexDisplay }>
           <Text style={ styles.text }>附近餐厅主面板DISPLAY</Text>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     paddingRight: 50
   },
   indexDisplay: {
-    flex: 9,
+    flex: 6,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -81,19 +85,17 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     height: 36,
-    flexDirection: 'row',
     backgroundColor: '#48BBEC',
     borderColor: '#FFFFFF',
     borderWidth: 2,
     borderRadius: 8,
-    alignSelf: 'stretch',
     justifyContent: 'center'
   },
   searchInput: {
     flex: 9,
     height: 36,
     marginRight: 10,
-    marginBottom: 15,
+    marginBottom: 0,
     backgroundColor: '#FFFFFF',
     borderColor: '#FFFFFF',
     borderWidth: 1,

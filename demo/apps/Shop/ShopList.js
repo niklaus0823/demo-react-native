@@ -1,6 +1,5 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight } from 'react-native';
 
-
 const REQUEST_URL = 'http://172.17.67.168:8081';
 const REQUEST_DATA_API = REQUEST_URL + '/public/data/shop.json';
 
@@ -9,12 +8,12 @@ class ShopListComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mainNavigator: props.mainNavigator,
+      keyword:props.router.keyword,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
-      loaded: false,
-      navigator: props.navigator,
-      keyword:props.router.keyword
+      loaded: false
     };
   }
 
@@ -34,8 +33,12 @@ class ShopListComponent extends Component {
       .done();
   }
 
-  onBack() {
-    this.state.navigator.pop();
+  goBack() {
+    this.state.mainNavigator.pop();
+  }
+
+  goShopView(shop) {
+    this.state.mainNavigator.push({ name:"ShopView", shop:shop });
   }
 
   render() {
@@ -46,7 +49,7 @@ class ShopListComponent extends Component {
     return (
       <View style={ styles.container }>
         <View style={ styles.searchBar }>
-          <TouchableHighlight style={ styles.button } onPress={ this.onBack.bind(this) } underlayColor='#99d9f4'>
+          <TouchableHighlight style={ styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
             <Text style={ styles.buttonText }> 〈 </Text>
           </TouchableHighlight>
           <View style={ styles.searchInput }>
@@ -75,7 +78,7 @@ class ShopListComponent extends Component {
   renderShopList(shop) {
     let shopThumbnail = REQUEST_URL + shop.thumbnail;
     return (
-      <TouchableHighlight underlayColor='#99d9f4'>
+      <TouchableHighlight onPress={ () => this.goShopView.bind(this)(shop) } underlayColor='#99d9f4'>
         <View style={ styles.listViewRows }>
           <Image source={{ uri: shopThumbnail }} style={ styles.thumbnail } />
           <View style={ styles.right }>
@@ -100,11 +103,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#48BBEC',
     paddingLeft: 50,
     paddingRight: 50
-  },
-  indexDisplay: {
-    flex: 9,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   buttonText: {
     fontSize: 30,
