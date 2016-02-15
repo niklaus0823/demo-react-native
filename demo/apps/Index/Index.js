@@ -77,9 +77,11 @@ class MainComponent extends Component {
 
     return (
       <View style={ styles.container }>
+
         <View style={ styles.header }>
           <Text style={ [styles.text, styles.textWhite] }>{ this.state.defaultTitle }</Text>
         </View>
+
         <View style={ styles.context }>
           <Navigator
             style={ styles.container }
@@ -88,6 +90,7 @@ class MainComponent extends Component {
             renderScene={ this.renderScene.bind(this) }
             />
         </View>
+
         <View style={ styles.footer }>
           <TouchableHighlight style={ styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goIndexPage.bind(this) }>
             <Text style={ styles.text }>外卖</Text>
@@ -102,12 +105,22 @@ class MainComponent extends Component {
             <Text style={ styles.text }>我的</Text>
           </TouchableHighlight>
         </View>
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  // FONT
+  text: {
+    fontSize: 26
+  },
+  textWhite: {
+    color: '#FFFFFF'
+  },
+
+  // LAYOUT BOX
   container: {
     flex: 1
   },
@@ -126,12 +139,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#EFEFEF'
   },
-  text: {
-    fontSize: 26
-  },
-  textWhite: {
-    color: '#FFFFFF'
-  },
+
+  // FOOTER
   footerButton: {
     flex: 1,
     borderWidth: 1,

@@ -39,31 +39,37 @@ class MainIndexComponent extends Component {
   render() {
     return (
       <View style={ styles.container }>
-        <View style={ styles.searchBar }>
-          <View style={ styles.searchInput }>
-            <TextInput ref="keyword" style={ styles.textInput } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
+
+        <View style={ styles.header }>
+          <View style={ styles.inputSearch }>
+            <TextInput ref="keyword" style={ styles.inputSearchText } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
           </View>
           <TouchableHighlight style={ styles.button } onPress={ this.onSearchPress.bind(this) } underlayColor='#99d9f4'>
             <Text style={ styles.buttonText }>Go</Text>
           </TouchableHighlight>
         </View>
-        <View style={ styles.indexDisplay }>
+
+        <View style={ styles.context }>
           <Text style={ styles.text }>附近餐厅主面板DISPLAY</Text>
         </View>
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
+  // FONT
   text: {
     fontSize: 20,
     color: '#48BBEC'
   },
-  searchBar: {
+
+  // LAYOUT BOX
+  container: {
+    flex: 1
+  },
+  header: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -72,16 +78,13 @@ const styles = StyleSheet.create({
     paddingLeft: 50,
     paddingRight: 50
   },
-  indexDisplay: {
+  context: {
     flex: 6,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
-  },
+
+  // BUTTON
   button: {
     flex: 1,
     height: 36,
@@ -91,7 +94,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center'
   },
-  searchInput: {
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+
+  // INPUT
+  inputSearch: {
     flex: 9,
     height: 36,
     marginRight: 10,
@@ -101,7 +111,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8
   },
-  textInput: {
+  inputSearchText: {
     height: 36,
     fontSize: 18,
     color: '#48BBEC',
