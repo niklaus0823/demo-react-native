@@ -77,7 +77,7 @@ export default StyleSheet.create({
   },
 
   // IMAGES
-  image: {
+  imageWithBorder: {
     width: 80,
     height: 80,
     borderColor: '#999999',
@@ -138,7 +138,8 @@ export default StyleSheet.create({
   headerTitle: {
     flex: 16,
     height: 36,
-    marginLeft: 10
+    marginRight: 50,
+    alignItems: 'center'
   },
   headerTitleText: {
     fontSize: 18,

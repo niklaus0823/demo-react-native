@@ -1,7 +1,9 @@
-import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight } from 'react-native';
+import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight, Dimensions } from 'react-native';
 import BaseConfigs from '../../config/BaseConfigs';
 import BaseStyles from '../../config/BaseStyles';
+import CartListComponent from '../../component/Cart/CartList';
 
+let menuObject = {};
 class ShopViewComponent extends Component {
 
   constructor(props) {
@@ -12,12 +14,19 @@ class ShopViewComponent extends Component {
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
-      loaded: false
+      loaded: false,
+      cart: {
+        totalSum: 0,
+        totalPrice: 0,
+        menuList: []
+      }
     };
+    this.changeCart = this.changeCart.bind(this);
   }
 
   componentDidMount() {
     this.fetchData();
+    this.buildMenuObject(this.state.shop.menuList);
   }
 
   fetchData() {
@@ -27,8 +36,47 @@ class ShopViewComponent extends Component {
     });
   }
 
+  buildMenuObject(menuList) {
+    menuList.forEach(function(menu) {
+      menuObject[menu.id] = menu;
+    });
+  }
+
   goBack() {
     this.state.mainNavigator.pop();
+  }
+
+  changeCart(menuId, count) {
+    let canUpdateCart = false;
+    if (count > 0
+      || this.state.cart.menuList[menuId] > 0) {
+      canUpdateCart = true;
+    }
+
+    if (canUpdateCart === true) {
+      if (this.state.cart.menuList.hasOwnProperty(menuId)) {
+        this.state.cart.menuList[menuId] += count;
+      } else {
+        this.state.cart.menuList[menuId] = count;
+      }
+
+      this.state.cart.totalSum += count;
+      if (menuObject.hasOwnProperty(menuId)) {
+        this.state.cart.totalPrice += menuObject[menuId].price * count
+      }
+    }
+
+    this.setState({
+      cart: this.state.cart
+    });
+  }
+
+  reduceCartCount(menuId) {
+    this.changeCart(menuId, -1);
+  }
+
+  addCartCount(menuId) {
+    this.changeCart(menuId, 1);
   }
 
   render() {
@@ -40,7 +88,7 @@ class ShopViewComponent extends Component {
             <Text style={ Styles.buttonText }> 〈 </Text>
           </TouchableHighlight>
           <View style={ BaseStyles.headerTitle }>
-            <Text style={ BaseStyles.headerTitleText }>{ this.state.shop.title }</Text>
+            <Text style={ [BaseStyles.headerTitleText, BaseStyles.text, BaseStyles.textWhite] }>{ this.state.shop.title }</Text>
           </View>
         </View>
 
@@ -50,13 +98,10 @@ class ShopViewComponent extends Component {
           renderRow={ this.renderMenuList.bind(this) }
           />
 
-        <View style={ Styles.cartArea} >
-          <Text>绝对底部</Text>
-        </View>
+        <CartListComponent shop={ this.state.shop } cart={ this.state.cart } />
       </View>
     );
   }
-
 
   drawStar(count, stars= '') {
     for (let i = 0; i < count; i++) {
@@ -68,26 +113,35 @@ class ShopViewComponent extends Component {
   renderMenuList(menu) {
     let menuThumbnail = BaseConfigs.REQUEST_URL + menu.thumbnail;
     let menuStar = this.drawStar(menu.star);
+    let inCartCount = (this.state.cart.menuList.hasOwnProperty(menu.id)) ? this.state.cart.menuList[menu.id] : 0;
 
     return (
       <TouchableHighlight underlayColor='#99d9f4'>
         <View style={ BaseStyles.listRows }>
 
-          <Image style={ BaseStyles.image } source={{ uri: menuThumbnail }} />
+          <Image style={ BaseStyles.imageWithBorder } source={{ uri: menuThumbnail }} />
 
           <View style={ BaseStyles.container }>
+            <Text style={ [BaseStyles.text, BaseStyles.textBlack] }>{ menu.title }</Text>
+            <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>{ menu.description }</Text>
+            <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>
+              <Text style={ BaseStyles.textGold }>{ menuStar }</Text>
+              { menu.star } 月售{ menu.totalSell }份
+            </Text>
             <View style={ BaseStyles.cellRows }>
-              <View style={ BaseStyles.cell80 }>
-                <Text style={ [BaseStyles.text, BaseStyles.textBlack] }>{ menu.title }</Text>
-                <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>{ menu.description }</Text>
-                <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>
-                  <Text style={ BaseStyles.textGold }>{ menuStar }</Text>
-                  { menu.star } 月售{ menu.totalSell }份
-                </Text>
+              <View style={ BaseStyles.cell70 }>
                 <Text style={ [BaseStyles.text, BaseStyles.textBolder, BaseStyles.textOrange] }>￥{ menu.price }</Text>
               </View>
-              <View style={ [BaseStyles.cell20] }>
-                  <Text style={ [BaseStyles.textBigger, BaseStyles.textGray, BaseStyles.textRight] }>+</Text>
+              <View style={ [Styles.cartButtonArea, BaseStyles.cell30] }>
+                <TouchableHighlight underlayColor='#99d9f4' onPress={ () => this.reduceCartCount(menu.id) }>
+                  <Image style={ [Styles.image] } source={{ uri: BaseConfigs.REQUEST_URL + '/public/images/-.png' }} />
+                </TouchableHighlight>
+                <View style={ [Styles.cartButton] }>
+                  <Text style={ [BaseStyles.textSmall, BaseStyles.textBlack] }>{ inCartCount }</Text>
+                </View>
+                <TouchableHighlight underlayColor='#99d9f4' onPress={ () => this.addCartCount(menu.id) }>
+                  <Image style={ [Styles.image] } source={{ uri: BaseConfigs.REQUEST_URL + '/public/images/+.png' }} />
+                </TouchableHighlight>
               </View>
             </View>
 
@@ -116,12 +170,9 @@ const Styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
-  cartArea: {
-    flex: 10,
-    backgroundColor: '#000000',
-    opacity: 0.5,
-    bottom: 0,
-    position: 'absolute'
+  image: {
+    width: 25,
+    height: 25
   },
 
   // BUTTON
@@ -132,6 +183,19 @@ const Styles = StyleSheet.create({
     fontSize: 30,
     color: '#FFFFFF',
     alignSelf: 'center'
+  },
+
+  // cartButton
+  cartButtonArea: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'stretch'
+  },
+  cartButton: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 

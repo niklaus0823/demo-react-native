@@ -103,7 +103,7 @@ class ShopListComponent extends Component {
       <TouchableHighlight onPress={ () => this.goShopView.bind(this)(shop) } underlayColor='#99d9f4'>
         <View style={ BaseStyles.listRows }>
 
-          <Image style={ BaseStyles.image } source={{ uri: shopThumbnail }} />
+          <Image style={ BaseStyles.imageWithBorder } source={{ uri: shopThumbnail }} />
 
           <View style={ BaseStyles.cellRows }>
 
@@ -114,7 +114,7 @@ class ShopListComponent extends Component {
                 <Text style={ [BaseStyles.textOrange, BaseStyles.textBolder] }> { shop.star }</Text>
                 <Text style={ BaseStyles.textGray }>  月售{ shop.totalSell }单</Text>
               </Text>
-              <View style={ [BaseStyles.shopStatus] }>
+              <View style={ [Styles.shopStatus] }>
                 <Text style={ [BaseStyles.textSmaller, BaseStyles.textWhite] }>{ shopStatus }</Text>
               </View>
             </View>
