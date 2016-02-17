@@ -1,4 +1,4 @@
-# REACT NATIVE
+# REACT NATIVE 安装与踩坑记录
 ---
 
 > React Native 可以用于构建原生 APP，并提高多平台开发的开发效率，Lean once，write anywhere
