@@ -28,7 +28,7 @@ class MainComponent extends Component {
   }
 
   configureScene(route) {
-    return Navigator.SceneConfigs.FadeAndroid;
+    return Navigator.SceneConfigs.HorizontalSwipeJump;
   }
 
   renderScene(router, navigator) {
