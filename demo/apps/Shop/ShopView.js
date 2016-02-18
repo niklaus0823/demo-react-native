@@ -80,6 +80,7 @@ class ShopViewComponent extends Component {
   }
 
   render() {
+    console.log('ShopView render');
     return (
       <View style={ BaseStyles.container }>
 

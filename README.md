@@ -39,6 +39,8 @@
 
 		react-native init HelloWorld
 
+> 安装过程中，可能会出现需要安装 python 与 MSBuild 的情况，可以不用管他，有强迫症的朋友也可以按照提示进行安装，注意环境变量的配置
+
 * 此处需要等待几分钟，等待npm的模块下载和项目创建。
 
 * 进入`HelloWorld`文件夹运行packager
@@ -123,6 +125,9 @@
 * 第三方模块：[https://js.coach/](https://js.coach/)
 * 已知的问题：[http://reactnative.cn/docs/known-issues.html#content](http://reactnative.cn/docs/known-issues.html#content)
 
+> 关于第三方模块，需要注意对平台的支持，很多第三方可能仅支持IOS，虽然标注了同时支持安卓，例如:Swiper，但实际测试结构是BUG有一大堆
+> 解决方案：动手能力强的直接去修改第三方的代码，或者去 github 上对问题进行提交，以期望作者进行修复。
+
 ## 代码相关
 
 * 关于IOS与Android的差异性
@@ -136,3 +141,5 @@
 * 关于Navigator
 	1. initialRoute参数，如果提供的是一个返回是 object 的方法名，会出现 Waring 级别警告，但不影响功能
 	2. renderScene参数，如果提供的方法中，使用 this.setState() 会造成 APP 崩溃，即使你已经 bind(this)
+
+* 关于Component API部分，请查阅React Flex的README

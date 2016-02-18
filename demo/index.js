@@ -4,6 +4,7 @@ import Index from './apps/Index/Index';
 import ShopList from './apps/Shop/ShopList';
 import ShopView from './apps/Shop/ShopView';
 import BaseStyles from './config/BaseStyles';
+import SwiperLogin from './component/Swiper/SwiperLogin';
 
 class demo extends Component {
 
@@ -21,6 +22,9 @@ class demo extends Component {
   renderScene(router, navigator) {
     let Component = null;
     switch(router.name) {
+      case "SwiperLogin":
+        Component = SwiperLogin;
+        break;
       case "Index":
         Component = Index;
         break;
@@ -31,7 +35,7 @@ class demo extends Component {
         Component = ShopView;
         break;
       default:
-        Component = Index;
+        Component = SwiperLogin;
     }
 
     return <Component router={ router } mainNavigator={ navigator } />

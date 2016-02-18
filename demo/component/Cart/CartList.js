@@ -13,6 +13,7 @@ class CartListComponent extends Component {
   }
 
   render() {
+    console.log('CartList render');
     return (
       <View style={ BaseStyles.container }>
         <View style={ Styles.cartArea} >
