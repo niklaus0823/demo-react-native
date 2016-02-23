@@ -3,7 +3,7 @@
     {
       "id": 10001,
       "title": "肯德基",
-      "thumbnail": "/public/images/shop/10001.jpg",
+      "thumbnail": "apps/public/images/shop/10001.jpg",
       "star": 4,
       "totalSell": 343,
       "startPrice": 50,
@@ -13,7 +13,7 @@
         {
           "id": 10001,
           "title": "红豆派",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 5,
           "totalSell": 3,
           "price": 11,
@@ -22,7 +22,7 @@
         {
           "id": 10002,
           "title": "红豆派2个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 3,
           "totalSell": 4,
           "price": 22,
@@ -31,7 +31,7 @@
         {
           "id": 10003,
           "title": "红豆派3个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 3,
           "totalSell": 4,
           "price": 33,
@@ -40,7 +40,7 @@
         {
           "id": 10004,
           "title": "红豆派4个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 2,
           "price": 44,
@@ -49,7 +49,7 @@
         {
           "id": 10005,
           "title": "红豆派5个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 1,
           "price": 55,
@@ -58,7 +58,7 @@
         {
           "id": 10006,
           "title": "红豆派5个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 1,
           "price": 55,
@@ -67,7 +67,7 @@
         {
           "id": 10007,
           "title": "红豆派5个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 1,
           "price": 55,
@@ -76,7 +76,7 @@
         {
           "id": 10008,
           "title": "红豆派5个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 1,
           "price": 55,
@@ -85,7 +85,7 @@
         {
           "id": 10009,
           "title": "红豆派5个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 1,
           "price": 55,
@@ -94,7 +94,7 @@
         {
           "id": 100010,
           "title": "红豆派5个",
-          "thumbnail": "/public/images/menu/10001.png",
+          "thumbnail": "apps/public/images/menu/10001.png",
           "star": 0,
           "totalSell": 1,
           "price": 55,
@@ -105,7 +105,7 @@
     {
       "id": 10002,
       "title": "麦当劳",
-      "thumbnail": "/public/images/shop/10002.jpg",
+      "thumbnail": "apps/public/images/shop/10002.jpg",
       "star": 2,
       "totalSell": 231,
       "startPrice": 0,
@@ -116,7 +116,7 @@
     {
       "id": 10003,
       "title": "肯德基",
-      "thumbnail": "/public/images/shop/10001.jpg",
+      "thumbnail": "apps/public/images/shop/10001.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -127,7 +127,7 @@
     {
       "id": 10004,
       "title": "麦当劳",
-      "thumbnail": "/public/images/shop/10002.jpg",
+      "thumbnail": "apps/public/images/shop/10002.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -138,7 +138,7 @@
     {
       "id": 10005,
       "title": "肯德基",
-      "thumbnail": "/public/images/shop/10001.jpg",
+      "thumbnail": "apps/public/images/shop/10001.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -149,7 +149,7 @@
     {
       "id": 10006,
       "title": "麦当劳",
-      "thumbnail": "/public/images/shop/10002.jpg",
+      "thumbnail": "apps/public/images/shop/10002.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -160,7 +160,7 @@
     {
       "id": 10007,
       "title": "肯德基",
-      "thumbnail": "/public/images/shop/10001.jpg",
+      "thumbnail": "apps/public/images/shop/10001.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -171,7 +171,7 @@
     {
       "id": 10008,
       "title": "麦当劳",
-      "thumbnail": "/public/images/shop/10002.jpg",
+      "thumbnail": "apps/public/images/shop/10002.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -182,7 +182,7 @@
     {
       "id": 10009,
       "title": "肯德基",
-      "thumbnail": "/public/images/shop/10001.jpg",
+      "thumbnail": "apps/public/images/shop/10001.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -193,7 +193,7 @@
     {
       "id": 10010,
       "title": "麦当劳",
-      "thumbnail": "/public/images/shop/10002.jpg",
+      "thumbnail": "apps/public/images/shop/10002.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -204,7 +204,7 @@
     {
       "id": 10011,
       "title": "肯德基",
-      "thumbnail": "/public/images/shop/10001.jpg",
+      "thumbnail": "apps/public/images/shop/10001.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,
@@ -215,7 +215,7 @@
     {
       "id": 10012,
       "title": "麦当劳",
-      "thumbnail": "/public/images/shop/10002.jpg",
+      "thumbnail": "apps/public/images/shop/10002.jpg",
       "star": 0,
       "totalSell": 0,
       "startPrice": 0,

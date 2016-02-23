@@ -1,7 +1,6 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight, Dimensions } from 'react-native';
-import BaseConfigs from '../../config/BaseConfigs';
-import BaseStyles from '../../config/BaseStyles';
-import CartListComponent from '../../component/Cart/CartList';
+import CartListComponent from './component/CartList.js';
+import MainStyles from '../../../styles/MainStyles';
 
 let menuObject = {};
 class ShopViewComponent extends Component {
@@ -9,8 +8,6 @@ class ShopViewComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainNavigator: props.mainNavigator,
-      shop:props.router.shop,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
@@ -26,12 +23,12 @@ class ShopViewComponent extends Component {
 
   componentDidMount() {
     this.fetchData();
-    this.buildMenuObject(this.state.shop.menuList);
+    this.buildMenuObject(this.props.router.shop.menuList);
   }
 
   fetchData() {
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(this.state.shop.menuList),
+      dataSource: this.state.dataSource.cloneWithRows(this.props.router.shop.menuList),
       loaded: true
     });
   }
@@ -43,7 +40,7 @@ class ShopViewComponent extends Component {
   }
 
   goBack() {
-    this.state.mainNavigator.pop();
+    this.props.navigator.pop();
   }
 
   changeCart(menuId, count) {
@@ -80,16 +77,15 @@ class ShopViewComponent extends Component {
   }
 
   render() {
-    console.log('ShopView render');
     return (
-      <View style={ BaseStyles.container }>
+      <View style={ MainStyles.container }>
 
         <View style={ Styles.header }>
           <TouchableHighlight style={ Styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
             <Text style={ Styles.buttonText }> 〈 </Text>
           </TouchableHighlight>
-          <View style={ BaseStyles.headerTitle }>
-            <Text style={ [BaseStyles.headerTitleText, BaseStyles.text, BaseStyles.textWhite] }>{ this.state.shop.title }</Text>
+          <View style={ MainStyles.headerTitle }>
+            <Text style={ [MainStyles.headerTitleText, MainStyles.text, MainStyles.textWhite] }>{ this.props.router.shop.title }</Text>
           </View>
         </View>
 
@@ -99,7 +95,7 @@ class ShopViewComponent extends Component {
           renderRow={ this.renderMenuList.bind(this) }
           />
 
-        <CartListComponent shop={ this.state.shop } cart={ this.state.cart } />
+        <CartListComponent shop={ this.props.router.shop } cart={ this.state.cart } />
       </View>
     );
   }
@@ -112,36 +108,36 @@ class ShopViewComponent extends Component {
   }
 
   renderMenuList(menu) {
-    let menuThumbnail = BaseConfigs.REQUEST_URL + menu.thumbnail;
+    let menuThumbnail = this.props.AppConfig.REQUEST_URL + '/' + menu.thumbnail;
     let menuStar = this.drawStar(menu.star);
     let inCartCount = (this.state.cart.menuList.hasOwnProperty(menu.id)) ? this.state.cart.menuList[menu.id] : 0;
 
     return (
       <TouchableHighlight underlayColor='#99d9f4'>
-        <View style={ BaseStyles.listRows }>
+        <View style={ MainStyles.listRows }>
 
-          <Image style={ BaseStyles.imageWithBorder } source={{ uri: menuThumbnail }} />
+          <Image style={ MainStyles.imageWithBorder } source={{ uri: menuThumbnail }} />
 
-          <View style={ BaseStyles.container }>
-            <Text style={ [BaseStyles.text, BaseStyles.textBlack] }>{ menu.title }</Text>
-            <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>{ menu.description }</Text>
-            <Text style={ [BaseStyles.textSmaller, BaseStyles.textGray] }>
-              <Text style={ BaseStyles.textGold }>{ menuStar }</Text>
+          <View style={ MainStyles.container }>
+            <Text style={ [MainStyles.text, MainStyles.textBlack] }>{ menu.title }</Text>
+            <Text style={ [MainStyles.textSmaller, MainStyles.textGray] }>{ menu.description }</Text>
+            <Text style={ [MainStyles.textSmaller, MainStyles.textGray] }>
+              <Text style={ MainStyles.textGold }>{ menuStar }</Text>
               { menu.star } 月售{ menu.totalSell }份
             </Text>
-            <View style={ BaseStyles.cellRows }>
-              <View style={ BaseStyles.cell70 }>
-                <Text style={ [BaseStyles.text, BaseStyles.textBolder, BaseStyles.textOrange] }>￥{ menu.price }</Text>
+            <View style={ MainStyles.cellRows }>
+              <View style={ MainStyles.cell70 }>
+                <Text style={ [MainStyles.text, MainStyles.textBolder, MainStyles.textOrange] }>￥{ menu.price }</Text>
               </View>
-              <View style={ [Styles.cartButtonArea, BaseStyles.cell30] }>
+              <View style={ [Styles.cartButtonArea, MainStyles.cell30] }>
                 <TouchableHighlight underlayColor='#99d9f4' onPress={ () => this.reduceCartCount(menu.id) }>
-                  <Image style={ [Styles.image] } source={{ uri: BaseConfigs.REQUEST_URL + '/public/images/-.png' }} />
+                  <Image style={ [Styles.image] } source={{ uri: this.props.AppConfig.REQUEST_URL + '/apps/public/images/-.png' }} />
                 </TouchableHighlight>
                 <View style={ [Styles.cartButton] }>
-                  <Text style={ [BaseStyles.textSmall, BaseStyles.textBlack] }>{ inCartCount }</Text>
+                  <Text style={ [MainStyles.textSmall, MainStyles.textBlack] }>{ inCartCount }</Text>
                 </View>
                 <TouchableHighlight underlayColor='#99d9f4' onPress={ () => this.addCartCount(menu.id) }>
-                  <Image style={ [Styles.image] } source={{ uri: BaseConfigs.REQUEST_URL + '/public/images/+.png' }} />
+                  <Image style={ [Styles.image] } source={{ uri: this.props.AppConfig.REQUEST_URL + '/apps/public/images/+.png' }} />
                 </TouchableHighlight>
               </View>
             </View>

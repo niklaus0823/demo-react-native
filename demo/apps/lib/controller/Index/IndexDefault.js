@@ -1,6 +1,5 @@
-"use strict";
 import React, { Component, ScrollView, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight, Alert } from 'react-native';
-import BaseStyles from '../../config/BaseStyles';
+import MainStyles from '../../../styles/MainStyles';
 
 // 附近餐厅主面板
 class MainIndexComponent extends Component {
@@ -8,9 +7,10 @@ class MainIndexComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: null,
-      mainNavigator: props.mainNavigator
+      keyword: null
     };
+
+    this.goShopList = this.goShopList.bind(this);
   }
 
   onSearchChanged(event) {
@@ -34,24 +34,24 @@ class MainIndexComponent extends Component {
   }
 
   goShopList(keyword) {
-    this.state.mainNavigator.push({ name:"ShopList", keyword:keyword });
+    this.props.navigator.push({ name:"ShopList", keyword:keyword });
   }
 
   render() {
     return (
-      <View style={ BaseStyles.container }>
+      <View style={ MainStyles.container }>
 
         <View style={ Styles.header }>
-          <View style={ BaseStyles.inputSearch }>
-            <TextInput ref="keyword" style={ BaseStyles.inputSearchText } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
+          <View style={ MainStyles.inputSearch }>
+            <TextInput ref="keyword" style={ MainStyles.inputSearchText } onChange={ this.onSearchChanged.bind(this) } underlineColorAndroid="transparent" placeholder='请输入商家或商品名称'/>
           </View>
-          <TouchableHighlight style={ BaseStyles.button } onPress={ this.onSearchPress.bind(this) } underlayColor='#99d9f4'>
-            <Text style={ BaseStyles.buttonText }>Go</Text>
+          <TouchableHighlight style={ MainStyles.button } onPress={ this.onSearchPress.bind(this) } underlayColor='#99d9f4'>
+            <Text style={ MainStyles.buttonText }>Go</Text>
           </TouchableHighlight>
         </View>
 
-        <View style={ [Styles.context, BaseStyles.alignCenter, BaseStyles.alignVerticalCenter] }>
-          <Text style={ BaseStyles.text }>附近餐厅主面板DISPLAY</Text>
+        <View style={ [Styles.context, MainStyles.alignCenter, MainStyles.alignVerticalCenter] }>
+          <Text style={ MainStyles.text }>附近餐厅主面板DISPLAY</Text>
         </View>
 
       </View>

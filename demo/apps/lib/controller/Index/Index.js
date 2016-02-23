@@ -3,7 +3,7 @@ import IndexDefault from './IndexDefault';
 import IndexOrder from './IndexOrder';
 import IndexDiscovery from './IndexDiscovery';
 import IndexMine from './IndexMine';
-import BaseStyles from '../../config/BaseStyles';
+import MainStyles from '../../../styles/MainStyles';
 
 // 主页
 class MainComponent extends Component {
@@ -11,13 +11,10 @@ class MainComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainNavigator: props.mainNavigator,
-      subNavigator: null,
-      defaultTitle: '搜索外卖',
-      defaultComponent: 'IndexDefault'
+      childNavigator: null,
+      defaultTitle: '搜索外卖'
     };
 
-    // 将state绑定到自定义函数onChange中
     this.changeTitle = this.changeTitle.bind(this);
   }
 
@@ -49,44 +46,44 @@ class MainComponent extends Component {
       default: //default view
         Component = IndexDefault;
     }
-    this.state.subNavigator = navigator;
+    this.state.childNavigator = navigator;
 
-    return <Component router={ router } mainNavigator={ this.state.mainNavigator } childNavigator={ navigator } />
+    return <Component {...this.props} router={ router } />
   }
 
   goIndexPage() {
-    this.state.subNavigator.push({ name:"IndexDefault" });
+    this.state.childNavigator.push({ name:"IndexDefault" });
     this.changeTitle('搜索外卖');
   }
 
   goOrderPage() {
-    this.state.subNavigator.push({ name:"IndexOrder" });
+    this.state.childNavigator.push({ name:"IndexOrder" });
     this.changeTitle('订单管理');
   }
 
   goDiscovery() {
-    this.state.subNavigator.push({ name:"IndexDiscovery" });
+    this.state.childNavigator.push({ name:"IndexDiscovery" });
     this.changeTitle('周边发现');
   }
 
   goMine() {
-    this.state.subNavigator.push({ name:"IndexMine" });
+    this.state.childNavigator.push({ name:"IndexMine" });
     this.changeTitle('我的管理');
   };
 
   render() {
 
     return (
-      <View style={ BaseStyles.container }>
+      <View style={ MainStyles.container }>
 
         <View style={ Styles.header }>
-          <Text style={ [BaseStyles.text, BaseStyles.textWhite] }>{ this.state.defaultTitle }</Text>
+          <Text style={ [MainStyles.text, MainStyles.textWhite] }>{ this.state.defaultTitle }</Text>
         </View>
 
         <View style={ Styles.context }>
           <Navigator
-            style={ BaseStyles.container }
-            initialRoute={{ name: this.state.defaultComponent }}
+            style={ MainStyles.container }
+            initialRoute={{ name: 'IndexDefault' }}
             configureScene={ this.configureScene }
             renderScene={ this.renderScene.bind(this) }
             />
@@ -94,16 +91,16 @@ class MainComponent extends Component {
 
         <View style={ Styles.footer }>
           <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goIndexPage.bind(this) }>
-            <Text style={ BaseStyles.text }>外卖</Text>
+            <Text style={ MainStyles.text }>外卖</Text>
           </TouchableHighlight>
           <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goOrderPage.bind(this) }>
-            <Text style={ BaseStyles.text }>订单</Text>
+            <Text style={ MainStyles.text }>订单</Text>
           </TouchableHighlight>
           <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goDiscovery.bind(this) }>
-            <Text style={ BaseStyles.text }>发现</Text>
+            <Text style={ MainStyles.text }>发现</Text>
           </TouchableHighlight>
           <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goMine.bind(this) }>
-            <Text style={ BaseStyles.text }>我的</Text>
+            <Text style={ MainStyles.text }>我的</Text>
           </TouchableHighlight>
         </View>
 

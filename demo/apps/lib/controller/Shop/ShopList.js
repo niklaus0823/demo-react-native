@@ -1,14 +1,11 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight, Alert } from 'react-native';
-import BaseConfigs from '../../config/BaseConfigs';
-import BaseStyles from '../../config/BaseStyles';
+import MainStyles from '../../../styles/MainStyles';
 
 class ShopListComponent extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      mainNavigator: props.mainNavigator,
-      keyword:props.router.keyword,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
@@ -21,7 +18,7 @@ class ShopListComponent extends Component {
   }
 
   fetchData() {
-    fetch(BaseConfigs.REQUEST_URL + '/public/data/shop.json')
+    fetch(this.props.AppConfig.REQUEST_URL + '/apps/public/data/shop.json')
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
@@ -33,7 +30,7 @@ class ShopListComponent extends Component {
   }
 
   goBack() {
-    this.state.mainNavigator.pop();
+    this.props.navigator.pop();
   }
 
   goShopView(shop) {
@@ -46,7 +43,7 @@ class ShopListComponent extends Component {
         ]
       )
     } else {
-      this.state.mainNavigator.push({ name:"ShopView", shop:shop });
+      this.props.navigator.push({ name:"ShopView", shop:shop });
     }
   }
 
@@ -56,14 +53,14 @@ class ShopListComponent extends Component {
     }
 
     return (
-      <View style={ BaseStyles.container }>
+      <View style={ MainStyles.container }>
 
         <View style={ Styles.header }>
           <TouchableHighlight style={ Styles.button } onPress={ this.goBack.bind(this) } underlayColor='#99d9f4'>
             <Text style={ Styles.buttonText }> 〈 </Text>
           </TouchableHighlight>
-          <View style={ BaseStyles.inputSearch }>
-            <TextInput style={ BaseStyles.inputSearchText } defaultValue={ this.state.keyword } editable={ false } underlineColorAndroid="transparent"/>
+          <View style={ MainStyles.inputSearch }>
+            <TextInput style={ MainStyles.inputSearchText } defaultValue={ this.props.router.keyword } editable={ false } underlineColorAndroid="transparent"/>
           </View>
         </View>
 
@@ -79,9 +76,9 @@ class ShopListComponent extends Component {
 
   renderLoadingView() {
     return (
-      <View style={ BaseStyles.container }>
+      <View style={ MainStyles.container }>
         <Text>
-          Loading movies...
+          Loading datas...
         </Text>
       </View>
     );
@@ -95,36 +92,36 @@ class ShopListComponent extends Component {
   }
 
   renderShopList(shop) {
-    let shopThumbnail = BaseConfigs.REQUEST_URL + shop.thumbnail;
+    let shopThumbnail = this.props.AppConfig.REQUEST_URL + '/' + shop.thumbnail;
     let shopStar = this.drawStar(shop.star);
     let shopStatus = (shop.status == 1) ? "正常经营" : "停业休息";
 
     return (
       <TouchableHighlight onPress={ () => this.goShopView.bind(this)(shop) } underlayColor='#99d9f4'>
-        <View style={ BaseStyles.listRows }>
+        <View style={ MainStyles.listRows }>
 
-          <Image style={ BaseStyles.imageWithBorder } source={{ uri: shopThumbnail }} />
+          <Image style={ MainStyles.imageWithBorder } source={{ uri: shopThumbnail }} />
 
-          <View style={ BaseStyles.cellRows }>
+          <View style={ MainStyles.cellRows }>
 
-            <View style={ BaseStyles.cell70 }>
-              <Text style={ [BaseStyles.text, BaseStyles.textBlack] }>{ shop.title }</Text>
-              <Text style={ [BaseStyles.textSmaller] }>
-                <Text style={ BaseStyles.textGold }>{ shopStar }</Text>
-                <Text style={ [BaseStyles.textOrange, BaseStyles.textBolder] }> { shop.star }</Text>
-                <Text style={ BaseStyles.textGray }>  月售{ shop.totalSell }单</Text>
+            <View style={ MainStyles.cell70 }>
+              <Text style={ [MainStyles.text, MainStyles.textBlack] }>{ shop.title }</Text>
+              <Text style={ [MainStyles.textSmaller] }>
+                <Text style={ MainStyles.textGold }>{ shopStar }</Text>
+                <Text style={ [MainStyles.textOrange, MainStyles.textBolder] }> { shop.star }</Text>
+                <Text style={ MainStyles.textGray }>  月售{ shop.totalSell }单</Text>
               </Text>
               <View style={ [Styles.shopStatus] }>
-                <Text style={ [BaseStyles.textSmaller, BaseStyles.textWhite] }>{ shopStatus }</Text>
+                <Text style={ [MainStyles.textSmaller, MainStyles.textWhite] }>{ shopStatus }</Text>
               </View>
             </View>
 
-            <View style={ BaseStyles.cell30 }>
-              <Text style={ [BaseStyles.textSmaller, BaseStyles.textRight] }>
-                <Text style={ [BaseStyles.textSmall, BaseStyles.textOrange, BaseStyles.textBolder] }>￥{ shop.startPrice }</Text> 起送
+            <View style={ MainStyles.cell30 }>
+              <Text style={ [MainStyles.textSmaller, MainStyles.textRight] }>
+                <Text style={ [MainStyles.textSmall, MainStyles.textOrange, MainStyles.textBolder] }>￥{ shop.startPrice }</Text> 起送
               </Text>
-              <Text style={ [BaseStyles.textSmaller, BaseStyles.textRight] }>
-                <Text style={ [BaseStyles.textOrange, BaseStyles.textBolder] }>￥{ shop.deliveryPrice }</Text> 配送费
+              <Text style={ [MainStyles.textSmaller, MainStyles.textRight] }>
+                <Text style={ [MainStyles.textOrange, MainStyles.textBolder] }>￥{ shop.deliveryPrice }</Text> 配送费
               </Text>
             </View>
 

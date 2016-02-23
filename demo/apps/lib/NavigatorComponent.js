@@ -1,17 +1,12 @@
-'use strict';
 import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, TouchableHighlight } from 'react-native';
-import Index from './apps/Index/Index';
-import ShopList from './apps/Shop/ShopList';
-import ShopView from './apps/Shop/ShopView';
-import BaseStyles from './config/BaseStyles';
+import Index from './controller/Index/Index';
+import ShopList from './controller/Shop/ShopList';
+import ShopView from './controller/Shop/ShopView';
 
-class demo extends Component {
+class index extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      defaultComponent: 'Index'
-    };
+  constructor(props) {
+    super(props);
   }
 
   configureScene(route) {
@@ -34,20 +29,19 @@ class demo extends Component {
         Component = Index;
     }
 
-    return <Component router={ router } mainNavigator={ navigator } />
+    return <Component {...this.props} router={ router } navigator={ navigator } />
   }
 
   render() {
     return (
       <Navigator
-        style={ BaseStyles.container }
-        initialRoute={{ name: this.state.defaultComponent }}
+        initialRoute={{ name: 'Index' }}
         configureScene={ this.configureScene }
-        renderScene={ this.renderScene }
+        renderScene={ this.renderScene.bind(this) }
         />
     );
   }
 
 }
 
-export default demo;
+export default index;
