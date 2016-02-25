@@ -2,7 +2,7 @@ import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, 
 import MainStyles from '../../../styles/MainStyles';
 
 // 发现主面板
-class IndexDiscoveryComponent extends Component {
+class IndexDiscovery extends Component {
   render() {
     return (
       <View style={ [MainStyles.container, MainStyles.alignCenter, MainStyles.alignVerticalCenter] }>
@@ -14,4 +14,4 @@ class IndexDiscoveryComponent extends Component {
   }
 }
 
-export default IndexDiscoveryComponent;
+export default IndexDiscovery;

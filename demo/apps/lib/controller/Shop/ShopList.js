@@ -1,7 +1,7 @@
 import React, { Component, View, Text, TextInput, Image, StyleSheet, ListView, TouchableHighlight, Alert } from 'react-native';
 import MainStyles from '../../../styles/MainStyles';
 
-class ShopListComponent extends Component {
+class ShopList extends Component {
 
   constructor(props) {
     super(props);
@@ -104,11 +104,10 @@ class ShopListComponent extends Component {
 
           <View style={ MainStyles.cellRows }>
 
-            <View style={ MainStyles.cell70 }>
+            <View style={ MainStyles.cell60 }>
               <Text style={ [MainStyles.text, MainStyles.textBlack] }>{ shop.title }</Text>
               <Text style={ [MainStyles.textSmaller] }>
-                <Text style={ MainStyles.textGold }>{ shopStar }</Text>
-                <Text style={ [MainStyles.textOrange, MainStyles.textBolder] }> { shop.star }</Text>
+                <Text style={ [MainStyles.textGold,MainStyles.textBigger] }>{ shopStar }</Text>
                 <Text style={ MainStyles.textGray }>  月售{ shop.totalSell }单</Text>
               </Text>
               <View style={ [Styles.shopStatus] }>
@@ -116,7 +115,7 @@ class ShopListComponent extends Component {
               </View>
             </View>
 
-            <View style={ MainStyles.cell30 }>
+            <View style={ MainStyles.cell40 }>
               <Text style={ [MainStyles.textSmaller, MainStyles.textRight] }>
                 <Text style={ [MainStyles.textSmall, MainStyles.textOrange, MainStyles.textBolder] }>￥{ shop.startPrice }</Text> 起送
               </Text>
@@ -141,14 +140,14 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#48BBEC',
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 0,
+    paddingRight: 0
   },
   context: {
     flex: 90,
     backgroundColor: '#FFFFFF',
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 10,
+    paddingRight: 10
   },
 
   // BUTTON
@@ -172,4 +171,4 @@ const Styles = StyleSheet.create({
 });
 
 
-export default ShopListComponent;
+export default ShopList;

@@ -6,7 +6,7 @@ import IndexMine from './IndexMine';
 import MainStyles from '../../../styles/MainStyles';
 
 // 主页
-class MainComponent extends Component {
+class Main extends Component {
 
   constructor(props) {
     super(props);
@@ -66,9 +66,8 @@ class MainComponent extends Component {
     this.changeTitle('周边发现');
   }
 
-  goMine() {
-    this.state.childNavigator.push({ name:"IndexMine" });
-    this.changeTitle('我的管理');
+  goCamera() {
+    this.props.navigator.push({ name:"BarScanner" });
   };
 
   render() {
@@ -99,8 +98,8 @@ class MainComponent extends Component {
           <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goDiscovery.bind(this) }>
             <Text style={ MainStyles.text }>发现</Text>
           </TouchableHighlight>
-          <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goMine.bind(this) }>
-            <Text style={ MainStyles.text }>我的</Text>
+          <TouchableHighlight style={ Styles.footerButton } underlayColor='#FFFFFF' onPress={ this.goCamera.bind(this) }>
+            <Text style={ MainStyles.text }>扫码</Text>
           </TouchableHighlight>
         </View>
 
@@ -139,4 +138,4 @@ const Styles = StyleSheet.create({
 });
 
 
-export default MainComponent;
+export default Main;

@@ -2,7 +2,7 @@ import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, 
 import MainStyles from '../../../styles/MainStyles';
 
 // 我的管理主面板
-class IndexMineComponent extends Component {
+class IndexMine extends Component {
   render() {
     return (
       <View style={ [MainStyles.container, MainStyles.alignCenter, MainStyles.alignVerticalCenter] }>
@@ -14,4 +14,4 @@ class IndexMineComponent extends Component {
   }
 }
 
-export default IndexMineComponent;
+export default IndexMine;

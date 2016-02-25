@@ -3,20 +3,20 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   // FONT
   text: {
-    fontSize: 26,
+    fontSize: 16,
     color: '#48BBEC'
   },
   textBig: {
-    fontSize: 32
+    fontSize: 20
   },
   textBigger: {
-    fontSize: 38
+    fontSize: 24
   },
   textSmall: {
     fontSize: 20
   },
   textSmaller: {
-    fontSize: 14
+    fontSize: 12
   },
   textBold: {
     fontWeight: '600'
@@ -71,7 +71,7 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 12,
     color: '#FFFFFF',
     alignSelf: 'center'
   },
@@ -83,7 +83,7 @@ export default StyleSheet.create({
     borderColor: '#999999',
     borderWidth: 1,
     borderRadius: 10,
-    marginRight: 20
+    marginRight: 10
   },
 
   // CELL
@@ -128,8 +128,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
     borderBottomColor: '#999999',
     borderBottomWidth: 1
   },
@@ -162,7 +162,7 @@ export default StyleSheet.create({
   },
   inputSearchText: {
     height: 36,
-    fontSize: 18,
+    fontSize: 12,
     color: '#48BBEC',
     backgroundColor: '#FFFFFF',
     borderColor: '#FFFFFF',

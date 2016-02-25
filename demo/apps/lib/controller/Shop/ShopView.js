@@ -3,7 +3,7 @@ import CartListComponent from './component/CartList.js';
 import MainStyles from '../../../styles/MainStyles';
 
 let menuObject = {};
-class ShopViewComponent extends Component {
+class ShopView extends Component {
 
   constructor(props) {
     super(props);
@@ -122,14 +122,14 @@ class ShopViewComponent extends Component {
             <Text style={ [MainStyles.text, MainStyles.textBlack] }>{ menu.title }</Text>
             <Text style={ [MainStyles.textSmaller, MainStyles.textGray] }>{ menu.description }</Text>
             <Text style={ [MainStyles.textSmaller, MainStyles.textGray] }>
-              <Text style={ MainStyles.textGold }>{ menuStar }</Text>
+              <Text style={ [MainStyles.textGold, MainStyles.textBigger] }>{ menuStar }</Text>
               { menu.star } 月售{ menu.totalSell }份
             </Text>
             <View style={ MainStyles.cellRows }>
-              <View style={ MainStyles.cell70 }>
+              <View style={ MainStyles.cell60 }>
                 <Text style={ [MainStyles.text, MainStyles.textBolder, MainStyles.textOrange] }>￥{ menu.price }</Text>
               </View>
-              <View style={ [Styles.cartButtonArea, MainStyles.cell30] }>
+              <View style={ [Styles.cartButtonArea, MainStyles.cell40] }>
                 <TouchableHighlight underlayColor='#99d9f4' onPress={ () => this.reduceCartCount(menu.id) }>
                   <Image style={ [Styles.image] } source={{ uri: this.props.AppConfig.REQUEST_URL + '/apps/public/images/-.png' }} />
                 </TouchableHighlight>
@@ -158,14 +158,14 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#48BBEC',
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 0,
+    paddingRight: 0
   },
   context: {
     flex: 90,
     backgroundColor: '#FFFFFF',
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 10,
+    paddingRight: 10
   },
   image: {
     width: 25,
@@ -197,4 +197,4 @@ const Styles = StyleSheet.create({
 });
 
 
-export default ShopViewComponent;
+export default ShopView;

@@ -2,7 +2,7 @@ import React, { Component, ScrollView, View, Text, TextInput, Image, StyleSheet,
 import MainStyles from '../../../styles/MainStyles';
 
 // 附近餐厅主面板
-class MainIndexComponent extends Component {
+class MainIndex extends Component {
 
   constructor(props) {
     super(props);
@@ -67,8 +67,8 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#48BBEC',
-    paddingLeft: 50,
-    paddingRight: 50
+    paddingLeft: 20,
+    paddingRight: 20
   },
   context: {
     flex: 6
@@ -76,4 +76,4 @@ const Styles = StyleSheet.create({
 });
 
 
-export default MainIndexComponent;
+export default MainIndex;

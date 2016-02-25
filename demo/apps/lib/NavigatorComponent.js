@@ -2,6 +2,7 @@ import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, 
 import Index from './controller/Index/Index';
 import ShopList from './controller/Shop/ShopList';
 import ShopView from './controller/Shop/ShopView';
+import BarScanner from './controller/BarScanner/BarScanner';
 
 class index extends Component {
 
@@ -24,6 +25,9 @@ class index extends Component {
         break;
       case "ShopView":
         Component = ShopView;
+        break;
+      case "BarScanner":
+        Component = BarScanner;
         break;
       default:
         Component = Index;

@@ -2,7 +2,7 @@ import React, { Component, View, Text, TextInput, Image, StyleSheet, Navigator, 
 import MainStyles from '../../../styles/MainStyles';
 
 // 订单主面板
-class IndexOrderComponent extends Component {
+class IndexOrder extends Component {
   render() {
     return (
       <View style={ [MainStyles.container, MainStyles.alignCenter, MainStyles.alignVerticalCenter] }>
@@ -14,4 +14,4 @@ class IndexOrderComponent extends Component {
   }
 }
 
-export default IndexOrderComponent;
+export default IndexOrder;
