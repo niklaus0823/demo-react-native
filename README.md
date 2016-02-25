@@ -76,10 +76,6 @@
 * 上述报错中，由于根据Facebook的技术人员回应，上面的问题是安卓模拟器的工具问题，暂时无法修复，建议安装 Genymotion。
 * 有条件的可以安装 Genymotion，可能会遇到无法登入的问题，实在不行，可以安装 BlueStacks 不过要小心他推送的广告与垃圾应用。
 
-* 关于复制本 DEMO 后，如果npm install出现RCT***的问题，或者其他问题，参考如下操作，可以绕过，具体原理目前还未搞懂
-	* 1. 在根目录自己手动 init 一个同名 APP，一定要同名，否则可能会出现报错。
-	* 2. 将本 DEMO 中的代码复制到你的同名 APP 下，注意：不要复制“android”与“ios”文件夹与“package.json”文件，否则模块版本号无法对上。
-
 ## 笔记
 
 * 尝试修改 index.android.js
@@ -146,4 +142,3 @@
 	1. initialRoute参数，如果提供的是一个返回是 object 的方法名，会出现 Waring 级别警告，但不影响功能
 	2. renderScene参数，如果提供的方法中，使用 this.setState() 会造成 APP 崩溃，即使你已经 bind(this)
 
-* 关于Component API部分，请查阅React Flex的README
