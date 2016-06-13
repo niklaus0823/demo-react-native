@@ -142,3 +142,35 @@
 	1. initialRoute参数，如果提供的是一个返回是 object 的方法名，会出现 Waring 级别警告，但不影响功能
 	2. renderScene参数，如果提供的方法中，使用 this.setState() 会造成 APP 崩溃，即使你已经 bind(this)
 
+## 打包相关
+
+* IOS 打包
+    * 命令：react-native bundle
+* Android 打包：
+    * 生成签名：keytool -genkey -v -keystore my-release-key.keystore  -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+    * 修改android/gradle.properties文件，增加如下
+        * MYAPP_RELEASE_STORE_FILE=my-release-key.keystore
+        * MYAPP_RELEASE_KEY_ALIAS=my-key-alias
+        * MYAPP_RELEASE_STORE_PASSWORD=xx
+        * MYAPP_RELEASE_KEY_PASSWORD=xx
+    * 修改android/app/build.gradle文件中的签名配置
+
+            android {
+                signingConfigs {
+                    release {
+                        storeFile file(MYAPP_RELEASE_STORE_FILE)
+                        storePassword MYAPP_RELEASE_STORE_PASSWORD
+                        keyAlias MYAPP_RELEASE_KEY_ALIAS
+                        keyPassword MYAPP_RELEASE_KEY_PASSWORD
+                    }
+                }
+                buildTypes {
+                    release {
+                      ...
+                      signingConfig signingConfigs.release
+                    }
+                }
+            }
+    * 进入android运行命令
+        * gradlew assembleRelease
+        * gradlew installRelease
